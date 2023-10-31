@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- LINK TO DAYJS API-->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <!-- CONTAINER FOR SEARCH BAR -->
+    <div class="search-container">
+        <div class="search-city">
+            <input type="text" placeholder="Enter zip code" id="zip-search">
+            <button onclick=searchBox() type="submit" style="cursor: pointer;">Search</button>
+            <p>Recent Searches:</p>
+            <div class="recent-searches">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="display: none;">
+        <!-- MAIN CONTAINER OR CURRENT CONDITIONS -->
+        <div class="main-weather-container">
+            <!-- LOCATION, DATE, AND TIME -->
+            <div class="loc-date-time">
+                <p id="location" style="font-weight: bold; font-size: 40px;">City Name</p>
+                <p id="date">Tuesday October 12, 2023 12:30PM</p>
+                <img id="current-icon" src="" alt="weather-icon">
+            </div>
+
+            <div class="current-conditions">
+                <div class="weather-item">
+                    <p style="font-weight: bold;">Temp:
+                        <span id="current-temp" style="font-weight: normal;"></span>
+                    </p>
+                </div>
+                <div class="weather-item">
+                    <p style="font-weight: bold;">Wind:
+                        <span id="current-wind" style="font-weight: normal;"></span>
+                    </p>
+                </div>
+                <div class="weather-item">
+                    <p style="font-weight: bold;">Humidity:
+                        <span id="current-humidity" style="font-weight: normal;"></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CONTAINER HOLDING 5 DAY FORECAST -->
+        <div class="forcast-container">
+            <h2>5 Day Forecast:</h2>
+            <div class="five-day-forecast">
+
+                <div class="day-1-future">
+                    <div class="weather-item">
+                        <h3 id="day-1-date" style="text-decoration: underline;"></h3>
+                        <img id="day-1-icon" src="" alt="weather-icon">
+                        <p style="font-weight: bold;">Temp:</p>
+                        <p id="day-1-temp">Current Temp</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Wind:</p>
+                        <p id="day-1-wind">Current Wind</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Humidity:</p>
+                        <p id="day-1-humidity">Current Humidity</p>
+                    </div>
+                </div>
+
+                <div class="day-2-future">
+                    <div class="weather-item">
+                        <h3 id="day-2-date" style="text-decoration: underline;"></h3>
+                        <img id="day-2-icon" alt="weather-icon">
+                        <p style="font-weight: bold;">Temp:</p>
+                        <p id="day-2-temp">Current Temp</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Wind:</p>
+                        <p id="day-2-wind">Current Wind</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Humidity:</p>
+                        <p id="day-2-humidity">Current Humidity</p>
+                    </div>
+                </div>
+
+                <div class="day-3-future">
+                    <div class="weather-item">
+                        <h3 id="day-3-date" style="text-decoration: underline;"></h3>
+                        <img id="day-3-icon" alt="weather-icon">
+                        <p style="font-weight: bold;">Temp:</p>
+                        <p id="day-3-temp">Current Temp</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Wind:</p>
+                        <p id="day-3-wind">Current Wind</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Humidity:</p>
+                        <p id="day-3-humidity">Current Humidity</p>
+                    </div>
+                </div>
+
+                <div class="day-4-future">
+                    <div class="weather-item">
+                        <h3 id="day-4-date" style="text-decoration: underline;"></h3>
+                        <img id="day-4-icon" alt="weather-icon">
+                        <p style="font-weight: bold;">Temp:</p>
+                        <p id="day-4-temp">Current Temp</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Wind:</p>
+                        <p id="day-4-wind">Current Wind</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Humidity:</p>
+                        <p id="day-4-humidity">Current Humidity</p>
+                    </div>
+                </div>
+
+                <div class="day-5-future">
+                    <div class="weather-item">
+                        <h3 id="day-5-date" style="text-decoration: underline;"></h3>
+                        <img id="day-5-icon" alt="weather-icon">
+                        <p style="font-weight: bold;">Temp:</p>
+                        <p id="day-5-temp">Current Temp</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Wind:</p>
+                        <p id="day-5-wind">Current Wind</p>
+                    </div>
+                    <div class="weather-item">
+                        <p style="font-weight: bold;">Humidity:</p>
+                        <p id="day-5-humidity">Current Humidity</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
